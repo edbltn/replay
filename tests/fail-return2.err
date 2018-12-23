@@ -1,0 +1,2 @@
+Illegal return in f.
+Fatal error: exception Printer.IllegalReturnError("f")

@@ -1,0 +1,4 @@
+float a = rand;
+float b = rand;
+
+println(a != b);

@@ -1,0 +1,2 @@
+Illegal return in main method.
+Fatal error: exception Printer.IllegalReturnError("main method")

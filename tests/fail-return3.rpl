@@ -1,0 +1,6 @@
+int f(int a) {
+  float b = 0.0;
+  return b;
+}
+
+println(f(0));

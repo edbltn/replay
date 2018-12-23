@@ -1,0 +1,2 @@
+i is not an attribute.
+Fatal error: exception Printer.MissingAttrError("i")

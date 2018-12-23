@@ -1,0 +1,2 @@
+Illegal assignment: int expression must be either an identifier or an array entry.
+Fatal error: exception Printer.IllegalAssignmentError(0)

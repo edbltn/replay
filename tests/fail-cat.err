@@ -1,0 +1,2 @@
+Type error: Game, when String was expected, in right concatenation operand.
+Fatal error: exception Printer.TypeError(3, 5, "right concatenation operand")

@@ -1,0 +1,6 @@
+int f() {
+  int i = 1;
+  return i;
+  int j = 1;
+  return j;
+}

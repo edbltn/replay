@@ -1,0 +1,7 @@
+int d(int a) {
+  return a;
+}
+
+int d(int a) {
+  return a;
+}

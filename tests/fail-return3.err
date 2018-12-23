@@ -1,0 +1,2 @@
+Type error: float, when int was expected, in return statement.
+Fatal error: exception Printer.TypeError(0, 2, "return statement")

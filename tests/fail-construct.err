@@ -1,0 +1,2 @@
+Payoffs should only appear in Game constructor.
+Fatal error: exception Printer.BadPlacementError("Payoffs", "Game")

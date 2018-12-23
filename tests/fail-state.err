@@ -1,0 +1,2 @@
+state3 is not a state.
+Fatal error: exception Printer.MissingStateError("state3")

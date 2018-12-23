@@ -1,0 +1,12 @@
+strat {Rock, Paper, Scissors};
+
+Strategy s = Strategy[3|4|{  state0: Rock, (Rock,Scissors) -> state1
+                                      | (Rock,Rock) -> state2;
+                             state1: Scissors, (_,_) -> state2;
+                             state2: Paper, (Paper,_) -> state1
+                                      | (Paper,Scissors) -> state0;}];
+
+println(s.players);
+println(s.moves);
+println(s.size);
+println(s);

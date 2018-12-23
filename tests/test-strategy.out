@@ -1,0 +1,44 @@
+2
+3
+4
+State 0: play 0
+( 0 0 ) -> state 0
+( 0 1 ) -> state 2
+( 0 2 ) -> state 1
+( 1 0 ) -> state 0
+( 1 1 ) -> state 0
+( 1 2 ) -> state 0
+( 2 0 ) -> state 0
+( 2 1 ) -> state 0
+( 2 2 ) -> state 0
+State 1: play 2
+( 0 0 ) -> state 2
+( 0 1 ) -> state 2
+( 0 2 ) -> state 2
+( 1 0 ) -> state 2
+( 1 1 ) -> state 2
+( 1 2 ) -> state 2
+( 2 0 ) -> state 2
+( 2 1 ) -> state 2
+( 2 2 ) -> state 2
+State 2: play 1
+( 0 0 ) -> state 2
+( 0 1 ) -> state 2
+( 0 2 ) -> state 2
+( 1 0 ) -> state 1
+( 1 1 ) -> state 1
+( 1 2 ) -> state 0
+( 2 0 ) -> state 2
+( 2 1 ) -> state 2
+( 2 2 ) -> state 2
+State 3: play 0
+( 0 0 ) -> state 3
+( 0 1 ) -> state 3
+( 0 2 ) -> state 3
+( 1 0 ) -> state 3
+( 1 1 ) -> state 3
+( 1 2 ) -> state 3
+( 2 0 ) -> state 3
+( 2 1 ) -> state 3
+( 2 2 ) -> state 3
+

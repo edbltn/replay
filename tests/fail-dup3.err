@@ -1,0 +1,2 @@
+Illegal duplicate defect.
+Fatal error: exception Printer.DupError("defect")

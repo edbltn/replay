@@ -1,0 +1,10 @@
+String[] hw = String[2];
+
+hw[0] = "Hello ";
+hw[1] = "World!";
+
+for s in hw {
+  print(s);
+}
+
+println("");

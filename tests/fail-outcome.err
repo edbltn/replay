@@ -1,0 +1,2 @@
+Incorrect number of players: 3 moves were expected.
+Fatal error: exception Printer.IllegalOutcomeError(3)

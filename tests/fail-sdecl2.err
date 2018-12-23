@@ -1,0 +1,2 @@
+Undeclared move C.
+Fatal error: exception Printer.MissingSdeclError("C")

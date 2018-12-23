@@ -1,0 +1,153 @@
+void sort(Player[] players, float[] payoffs) {
+  quickSort(players, payoffs, 0, players.len-1);
+}
+
+void quickSort(Player[] players, float[] payoffs, int lo, int hi) {
+  int i = lo;
+  int j = hi;
+
+  float pivot = payoffs[(lo+hi)/2];
+
+  while (i <= j) {
+    while (payoffs[i] > pivot) {
+      i = i + 1;
+    }
+    while (payoffs[j] < pivot) {
+      j = j - 1;
+    }
+    if (i <= j) {
+      Player temp1 = players[i];
+      players[i] = players[j];
+      players[j] = temp1;
+      float temp2 = payoffs[i];
+      payoffs[i] = payoffs[j];
+      payoffs[j] = temp2;
+      i = i + 1;
+      j = j - 1;
+    }
+  }
+  if (lo < j)
+    quickSort(players, payoffs, lo, j);
+  if (i < hi)
+    quickSort(players, payoffs, i, hi);
+}
+
+/* Return weighted random index */
+int randindex(float[] list) {
+  float r;
+  float sum = 0.0;
+  for p in list { sum = sum + p;}
+  r = rand * sum;
+  for i in [0:list.len-1] {
+    /* Accumulate list values, returning the index when r changes sign */
+    if (r > 0) {
+      r = r - list[i];
+      if (r < 0) { return i; }
+    }
+    else {
+      r = r - list[i];
+      if (r > 0) { return i; }
+    }
+  }
+  println(list.len-1);
+  return list.len-1;
+}
+
+strat {C,D};
+
+/* Stored as a matrix with a header */
+Game pd = Game[2 | {
+  (C,C) -> (-1,-1)
+| (C,D) -> (-6,0)
+| (D,C) -> (0,-6)
+| (D,D) -> (-5,-5)
+}];
+
+/* Store as an array of transitions with a header */
+Strategy grim1 = Strategy[2 | 3 | {
+  cooperate:  C, (_,D) -> defect;
+  defect:     D, (_,_) -> defect;
+}];
+
+Strategy grim2 = Strategy[2 | 3 | {
+  cooperate:  C, (D,_) -> defect;
+  defect:     D, (_,_) -> defect;
+}];
+
+/* 10 structures, indexed by i */
+Player[] players1 = Player[10];
+Player[] players2 = Player[10];
+float[] payoffs1 = float[10];
+float[] payoffs2 = float[10];
+
+for i in [0:players1.len - 1] {
+  players1[i] = Player[grim1];
+  players2[i] = Player[grim2];
+  payoffs1[i] = 0.0;
+  payoffs2[i] = 0.0;
+}
+
+/* 50 generations */
+for t in [1:70] {
+  /* Test against each environment and score. Keep even players in position one
+   * and odd players in position two. */
+  for i in [0:9] {
+    for j in [0:9] {
+      /* Reset both players */
+      players1[i] = players1[i].reset;
+      players2[j] = players2[j].reset;
+      /* Play 20 rounds */
+      for r in [1:20] {
+        players1[i], players2[j] % pd; /* Updates payoffs and state */
+      }
+      payoffs1[i] = payoffs1[i] + players1[i].payoff;
+      payoffs2[j] = payoffs2[j] + players2[j].payoff;
+    }
+  }
+
+  /* Form a new population of 10 structures */
+  /* Top 6 from old pop, 4 new ones generated as children. */
+  /* Parents selected randomly, but with more weight towards high payoffs */
+  sort(players1, payoffs1);
+  sort(players2, payoffs2);
+  for i in [0:1] {
+    int m1 = randindex(payoffs1);
+    int f1 = randindex(payoffs1);
+    /* Ensure parents are different */
+    if (m1 == f1) {
+      if (f1 == 9)  { m1 = m1-1; }
+      else          { f1 = f1+1; }
+    }
+    int m2 = randindex(payoffs2);
+    int f2 = randindex(payoffs2);
+    if (m2 == f2) {
+      if (f2 == 9)  { m2 = m2-1; }
+      else          { f2 = f2+1; }
+    }
+    players1[6+2*i] = Player[players1[m1].strategy];
+    players1[6+2*i+1] = Player[players1[f1].strategy];
+    players2[6+2*i] = Player[players2[m2].strategy];
+    players2[6+2*i+1] = Player[players2[f2].strategy];
+
+    /* form new children */
+    players1[6+2*i] #rand# players1[6+2*i+1];
+    players2[6+2*i] #rand# players2[6+2*i+1];
+
+    /* mutate children */
+    players1[6+2*i]   ~ 0.2;
+    players2[6+2*i]   ~ 0.2;
+    players1[6+2*i+1] ~ 0.2;
+    players2[6+2*i+1] ~ 0.2;
+  }
+
+  println("best: " ^ payoffs1[0]);
+  println("worst: " ^ payoffs1[9]);
+
+  /* Reset payoffs before moving on to next generation */
+  for i in [0:9] {
+    payoffs1[i] = 0.0;
+    payoffs2[i] = 0.0;
+  }
+}
+
+println(players1[0].strategy);

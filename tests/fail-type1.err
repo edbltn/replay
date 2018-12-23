@@ -1,0 +1,2 @@
+Type error: String, when int was expected, in right arithmetic operand.
+Fatal error: exception Printer.TypeError(0, 3, "right arithmetic operand")

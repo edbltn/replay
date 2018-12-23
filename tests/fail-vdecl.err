@@ -1,0 +1,2 @@
+Undeclared variable i.
+Fatal error: exception Printer.MissingVdeclError("i")

@@ -1,0 +1,2 @@
+strat{a, b, c, d};
+println(a ^ " " ^ b ^ " " ^ d);

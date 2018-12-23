@@ -1,0 +1,17 @@
+strat {A};
+
+Game g = Game[1 | {(A) -> (1)}];
+
+Strategy s = Strategy[1|1|{state0: A, (A) -> state0;}];
+
+Player[] players = Player[5];
+
+for i in [0:4] {
+  players[i] = Player[s|1.0];
+}
+
+for p in players {
+  p % g;
+  players[1] % g;
+}
+println(players[1].payoff);

@@ -1,0 +1,6 @@
+strat {C, N};
+Game g = Game[2|{ (C,_,N) -> (0,1,4,5)
+                | (C,C,N) -> (0,2,3,6)}];
+
+println(g.players);
+println(g.moves);

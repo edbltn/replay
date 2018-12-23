@@ -1,0 +1,6 @@
+strat {A, B, C};
+Strategy s = Strategy[3|4|{  state0: A, (A,C) -> state3
+                                      | (A,B) -> state2;
+                             state1: C, (_,_) -> state2;
+                             state2: B, (B,_) -> state1
+                                      | (B,C) -> state0;}];

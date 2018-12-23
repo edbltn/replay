@@ -1,0 +1,2 @@
+Attribute len doesn't apply to int.
+Fatal error: exception Printer.WrongAttrError("len", 0)

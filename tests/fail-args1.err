@@ -1,0 +1,2 @@
+Incorrect arguments in call to f
+Fatal error: exception Printer.ArgError("f")

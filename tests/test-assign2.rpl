@@ -1,0 +1,5 @@
+String s = "Hello World!";
+String b = s;
+
+println(b);
+println(b.len);

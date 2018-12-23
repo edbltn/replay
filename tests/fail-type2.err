@@ -1,0 +1,2 @@
+Type error: unexpected type String in left equality operand.
+Fatal error: exception Printer.TypeError(4, 3, "left equality operand")

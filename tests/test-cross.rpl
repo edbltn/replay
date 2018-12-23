@@ -1,0 +1,15 @@
+strat {A, B};
+
+Strategy s1 = Strategy[2|3|{  state0: A, (_,_) -> state0;
+                              state1: A, (_,_) -> state0;
+                              state2: A, (_,_) -> state0;}];
+
+Strategy s2 = Strategy[2|3|{  state0: B, (_,_) -> state1;
+                              state1: B, (_,_) -> state1;
+                              state2: B, (_,_) -> state1;}];
+
+Player p1 = Player[s1];
+Player p2 = Player[s2];
+p1#0.6#p2;
+
+println(p2.strategy);

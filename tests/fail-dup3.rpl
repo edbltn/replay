@@ -1,0 +1,6 @@
+strat {C, N};
+
+Strategy grim = Strategy[30 | 2 | {
+  defect: C, (_,N) -> defect;
+  defect: N, (_,_) -> defect;
+}];

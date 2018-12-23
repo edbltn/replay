@@ -1,0 +1,10 @@
+int add(int a, int b)
+{
+  int c;
+  c = a + b;
+  return c + a;
+}
+
+int d;
+d = add(31, 4);
+println(d);

@@ -1,0 +1,9 @@
+strat {A, B, C};
+
+Strategy s = Strategy[3|4|{  state0: A, (_,_) -> state1;
+                             state1: C, (_,_) -> state2;
+                             state2: B, (_,_) -> state1;}];
+Player p = Player[s|1.0];
+p ~ 0.5;
+
+println("Success!");

@@ -1,0 +1,14 @@
+int[] a = int[6];
+a[5] = 27;
+
+int f(int[] a) {
+  a[5] = 30;
+  {
+    int[] a = int[10];
+    a[5] = 14;
+    println(a[5]);
+  }
+  return a[5];
+}
+println(a[5]);
+println(f(int[10]));
